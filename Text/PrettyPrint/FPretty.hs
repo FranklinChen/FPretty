@@ -112,7 +112,12 @@ module Text.PrettyPrint.FPretty
 
 #if __GLASGOW_HASKELL__ >= 710
 -- The base libraries from GHC 7.10 onwards export <$> as synonym for fmap.
-import Prelude hiding ((<$>))
+import Prelude hiding (
+                        (<$>)
+#if __GLASGOW_HASKELL__ >= 804
+                      , (<>)
+#endif
+                      )
 #endif
 
 import Data.Maybe (fromJust)
